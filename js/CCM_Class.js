@@ -13,10 +13,7 @@ function CCM_Class () {
     };
     
     this.constants = new CONSTANTS();
-    /* The extender method is a closure acting as a method factory.
-     from which each subclass will create their own extend method.
-     n.b. extender returns extend (everything's an object in JS!)
-    */
+    
     this.implementer = function ( ) {
         var implement = function ( child ) {
             for ( var parent_key in this ){
@@ -35,6 +32,10 @@ function CCM_Class () {
         return implement;
     }
    /*
+     The extender method is a closure acting as a method factory.
+     from which each subclass will create their own extend method.
+     n.b. extender returns extend (everything's an object in JS!)
+    
      The extend method will in turn pass extender on to the subclass.
     */
     this.extender  = function ( parent_prot ) {
